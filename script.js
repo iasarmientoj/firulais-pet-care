@@ -142,11 +142,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       3. Scroll-Reveal for About Section (and future sections)
+       3. Sticky Header — becomes solid on scroll
        ========================================================================== */
-    const revealTargets = document.querySelectorAll('.about-images, .about-content');
+    const mainHeader = document.getElementById('mainHeader');
 
-    if (revealTargets.length > 0) {
+    if (mainHeader) {
+        const onScroll = () => {
+            if (window.scrollY > 60) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // Run once on load in case page is already scrolled
+    }
+
+
+    /* ==========================================================================
+       4. Scroll-Reveal for About & Services sections
+       ========================================================================== */
+    const revealItems = document.querySelectorAll(
+        '.about-images, .about-content, .services-header, .service-card, .services-cta'
+    );
+
+    if (revealItems.length > 0) {
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -155,9 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.15 // Trigger when 15% of the element is in view
+            threshold: 0.12 // Trigger when 12% of the element is in view
         });
 
-        revealTargets.forEach(el => revealObserver.observe(el));
+        revealItems.forEach(el => revealObserver.observe(el));
     }
 });

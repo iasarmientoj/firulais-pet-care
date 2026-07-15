@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firulais Pet Care - Loving Pet Care</title>
-    <meta name="description" content="At Firulais Pet Care, we pamper and look after your best friend with the love and dedication they deserve. Visit us!">
+    <meta name="description"
+        content="At Firulais Pet Care, we pamper and look after your best friend with the love and dedication they deserve. Visit us!">
     <link rel="icon" type="image/x-icon" href="assets/ico.ico">
     <!-- Google Fonts: Fredoka (rounded, friendly) and Outfit (modern, clean) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Top Header Navigation -->
-    <header class="main-header">
+    <header class="main-header" id="mainHeader">
         <div class="header-container">
             <a href="#" class="brand-logo">
                 <img src="assets/logo-mini.png" alt="Firulais Pet Care Mini Logo" class="brand-mini-logo">
-                <span class="brand-text">Firulais Pet Care</span>
+                <span class="brand-text">Firulais Pet Care.</span>
             </a>
             <nav class="nav-menu">
                 <ul>
@@ -132,7 +137,7 @@
 
             <!-- RIGHT: Text content -->
             <div class="about-content">
-                <span class="about-label">About Us</span>
+                <span class="about-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">About Us</span>
                 <h2 class="about-heading">The Loving Hands<br>Behind Every Walk.</h2>
                 <p class="about-description">
                     We are Evan &amp; Gladys, two passionate animal lovers based in Hobart who turned their
@@ -166,7 +171,101 @@
         </div>
     </section>
 
+    <!-- ================================================================
+         Services Section
+    ================================================================ -->
+    <section class="services-section" id="services">
+        <!-- Decorative background elements -->
+        <div class="services-bg-paw services-bg-paw--1"><img src="assets/huella.png" alt=""></div>
+        <div class="services-bg-paw services-bg-paw--2"><img src="assets/huella.png" alt=""></div>
+
+        <div class="services-container">
+
+            <!-- Section Header -->
+            <div class="services-header">
+                <span class="services-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">Our Services</span>
+                <h2 class="services-heading">Everything Your Dog<br><em>Deserves.</em></h2>
+                <p class="services-subtext">
+                    From a relaxing afternoon stroll to a full-day stay, we offer personalised care
+                    tailored to each dog's personality and needs.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid">
+
+                <!-- Card 1: Dog Walking -->
+                <div class="service-card" data-reveal>
+                    <div class="service-card-img">
+                        <div class="service-img-placeholder">
+                            <span class="service-img-icon">🦮</span>
+                            <p>Dog Walking</p>
+                        </div>
+                    </div>
+                    <div class="service-card-body">
+                        <h3 class="service-card-title">Dog Walking</h3>
+                        <p class="service-card-desc">Daily walks around Hobart's best parks and trails. Your dog stays active, social, and happy — rain or shine.</p>
+                        <span class="service-tag">From $25 / walk</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Pet Sitting -->
+                <div class="service-card" data-reveal>
+                    <div class="service-card-img">
+                        <div class="service-img-placeholder">
+                            <span class="service-img-icon">🏠</span>
+                            <p>Pet Sitting</p>
+                        </div>
+                    </div>
+                    <div class="service-card-body">
+                        <h3 class="service-card-title">Pet Sitting</h3>
+                        <p class="service-card-desc">We come to your home or welcome your pup into ours. Full-day companionship, meals, and plenty of cuddles included.</p>
+                        <span class="service-tag">From $45 / day</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Feeding & Care -->
+                <div class="service-card" data-reveal>
+                    <div class="service-card-img">
+                        <div class="service-img-placeholder">
+                            <span class="service-img-icon">🍖</span>
+                            <p>Feeding &amp; Care</p>
+                        </div>
+                    </div>
+                    <div class="service-card-body">
+                        <h3 class="service-card-title">Feeding &amp; Care</h3>
+                        <p class="service-card-desc">Scheduled feeding visits to your home. We follow your dog's routine, provide fresh water, and give all the love they need.</p>
+                        <span class="service-tag">From $20 / visit</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Overnight Stay -->
+                <div class="service-card" data-reveal>
+                    <div class="service-card-img">
+                        <div class="service-img-placeholder">
+                            <span class="service-img-icon">🌙</span>
+                            <p>Overnight Stay</p>
+                        </div>
+                    </div>
+                    <div class="service-card-body">
+                        <h3 class="service-card-title">Overnight Stay</h3>
+                        <p class="service-card-desc">Travelling or working late? Your dog stays with us overnight in a cosy, safe, and loving environment — just like home.</p>
+                        <span class="service-tag">From $65 / night</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="services-cta">
+                <a href="#contact" class="btn-services">Book Your First Session</a>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Main JavaScript for interactions and mouse trail -->
     <script src="script.js"></script>
 </body>
+
 </html>
