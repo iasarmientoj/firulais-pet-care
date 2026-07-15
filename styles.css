@@ -3076,3 +3076,50 @@ html, body {
     .footer-bottom { flex-direction: column; align-items: flex-start; padding: 20px; gap: 12px; }
 }
 
+
+/* ==========================================================================
+   Real Images — About, Services, Gallery, Lightbox
+   ========================================================================== */
+
+/* About images */
+.about-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+    transition: transform 0.5s ease;
+}
+.about-img-main:hover .about-real-img,
+.about-img-secondary:hover .about-real-img { transform: scale(1.04); }
+
+/* Service card images */
+.service-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.service-card:hover .service-real-img { transform: scale(1.06); }
+
+/* Gallery images */
+.gallery-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+.gallery-item:hover .gallery-real-img { transform: scale(1.06); }
+
+/* Lightbox real image */
+.lightbox-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 12px;
+}
