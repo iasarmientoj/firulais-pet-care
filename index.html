@@ -31,6 +31,7 @@
                     <li><a href="#hero" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -299,6 +300,125 @@
 
         </div>
     </section>
+
+    <!-- ================================================================
+         Gallery Section
+    ================================================================ -->
+    <section class="gallery-section" id="gallery">
+
+        <div class="gallery-container">
+
+            <!-- Section Header -->
+            <div class="gallery-header" data-reveal-fade>
+                <span class="gallery-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">Photo Gallery</span>
+                <h2 class="gallery-heading">Moments We <em>Treasure.</em></h2>
+                <p class="gallery-subtext">A glimpse into the happy, tail-wagging moments we share with every dog in our care.</p>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="gallery-grid">
+
+                <!-- Tall card -->
+                <div class="gallery-item gallery-item--tall" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="1">
+                        <span class="gallery-ph-icon">🐶</span>
+                        <span class="gallery-ph-text">Photo 1</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Normal -->
+                <div class="gallery-item" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="2">
+                        <span class="gallery-ph-icon">🐾</span>
+                        <span class="gallery-ph-text">Photo 2</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Normal -->
+                <div class="gallery-item" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="3">
+                        <span class="gallery-ph-icon">🦴</span>
+                        <span class="gallery-ph-text">Photo 3</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Wide card -->
+                <div class="gallery-item gallery-item--wide" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="4">
+                        <span class="gallery-ph-icon">🐕</span>
+                        <span class="gallery-ph-text">Photo 4</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Normal -->
+                <div class="gallery-item" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="5">
+                        <span class="gallery-ph-icon">🐈</span>
+                        <span class="gallery-ph-text">Photo 5</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Tall card -->
+                <div class="gallery-item gallery-item--tall" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="6">
+                        <span class="gallery-ph-icon">🤝</span>
+                        <span class="gallery-ph-text">Photo 6</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Normal -->
+                <div class="gallery-item" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="7">
+                        <span class="gallery-ph-icon">🏞️</span>
+                        <span class="gallery-ph-text">Photo 7</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Normal -->
+                <div class="gallery-item" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="8">
+                        <span class="gallery-ph-icon">🌱</span>
+                        <span class="gallery-ph-text">Photo 8</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+                <!-- Normal -->
+                <div class="gallery-item" data-reveal-fade>
+                    <div class="gallery-placeholder" data-index="9">
+                        <span class="gallery-ph-icon">❤️</span>
+                        <span class="gallery-ph-text">Photo 9</span>
+                    </div>
+                    <div class="gallery-overlay"><span>View</span></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Lightbox Modal
+    ================================================================ -->
+    <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+        <div class="lightbox-content" id="lightboxContent">
+            <!-- Placeholder shown in modal (replaced by real img when photos are loaded) -->
+            <div class="lightbox-placeholder" id="lightboxPlaceholder">
+                <span class="lightbox-ph-icon" id="lightboxIcon">🐶</span>
+                <span class="lightbox-ph-label" id="lightboxLabel">Photo</span>
+            </div>
+        </div>
+        <button class="lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+        <div class="lightbox-dots" id="lightboxDots"></div>
+    </div>
 
     <!-- Main JavaScript for interactions and mouse trail -->
     <script src="script.js"></script>

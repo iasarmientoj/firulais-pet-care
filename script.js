@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
        4. Scroll-Reveal for About & Services sections
        ========================================================================== */
     const revealItems = document.querySelectorAll(
-        '.about-images, .about-content, .services-header, .service-card, .services-cta, .stat-item'
+        '.about-images, .about-content, .services-header, .service-card, .services-cta, .stat-item, .gallery-header, .gallery-item'
     );
 
     if (revealItems.length > 0) {
@@ -238,5 +238,95 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.3 });
 
         statItems.forEach(el => statObserver.observe(el));
+    }
+
+
+    /* ==========================================================================
+       6. Gallery Lightbox
+       ========================================================================== */
+    const galleryItems   = Array.from(document.querySelectorAll('.gallery-item'));
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxClose   = document.getElementById('lightboxClose');
+    const lightboxPrev    = document.getElementById('lightboxPrev');
+    const lightboxNext    = document.getElementById('lightboxNext');
+    const lightboxDots    = document.getElementById('lightboxDots');
+    const lightboxIcon    = document.getElementById('lightboxIcon');
+    const lightboxLabel   = document.getElementById('lightboxLabel');
+
+    if (galleryItems.length && lightboxOverlay) {
+        let currentIndex = 0;
+
+        // Emoji icons matching each placeholder in order
+        const galleryData = [
+            { icon: '🐶', label: 'Photo 1' },
+            { icon: '🐾', label: 'Photo 2' },
+            { icon: '🦴', label: 'Photo 3' },
+            { icon: '🐕', label: 'Photo 4' },
+            { icon: '🐈', label: 'Photo 5' },
+            { icon: '🤝', label: 'Photo 6' },
+            { icon: '🏞️', label: 'Photo 7' },
+            { icon: '🌱', label: 'Photo 8' },
+            { icon: '❤️', label: 'Photo 9' },
+        ];
+
+        // Build indicator dots
+        galleryData.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'lightbox-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Go to photo ${i + 1}`);
+            dot.addEventListener('click', () => showItem(i));
+            lightboxDots.appendChild(dot);
+        });
+
+        /** Show a specific item in the lightbox */
+        function showItem(index) {
+            currentIndex = (index + galleryData.length) % galleryData.length;
+            const data = galleryData[currentIndex];
+            lightboxIcon.textContent  = data.icon;
+            lightboxLabel.textContent = data.label;
+
+            // Update dots
+            lightboxDots.querySelectorAll('.lightbox-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        /** Open lightbox */
+        function openLightbox(index) {
+            showItem(index);
+            lightboxOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent page scroll while open
+        }
+
+        /** Close lightbox */
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Open on gallery item click
+        galleryItems.forEach((item, i) => {
+            item.addEventListener('click', () => openLightbox(i));
+        });
+
+        // Close button
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Prev / Next
+        lightboxPrev.addEventListener('click', () => showItem(currentIndex - 1));
+        lightboxNext.addEventListener('click', () => showItem(currentIndex + 1));
+
+        // Click outside content to close
+        lightboxOverlay.addEventListener('click', (e) => {
+            if (e.target === lightboxOverlay) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxOverlay.classList.contains('active')) return;
+            if (e.key === 'Escape')       closeLightbox();
+            if (e.key === 'ArrowLeft')    showItem(currentIndex - 1);
+            if (e.key === 'ArrowRight')   showItem(currentIndex + 1);
+        });
     }
 });
