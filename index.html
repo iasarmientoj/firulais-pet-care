@@ -392,10 +392,7 @@
 
                 <!-- Step 1 -->
                 <div class="how-step">
-                    <div class="how-step-icon-wrap">
-                        <span class="how-step-icon">📋</span>
-                        <span class="how-step-number">01</span>
-                    </div>
+                    <div class="how-step-num-big">01</div>
                     <div class="how-step-connector"></div>
                     <h3 class="how-step-title">Book Online</h3>
                     <p class="how-step-desc">Fill out our quick booking form with your dog's details, preferred dates, and any special needs. Takes less than 2 minutes!</p>
@@ -403,10 +400,7 @@
 
                 <!-- Step 2 -->
                 <div class="how-step">
-                    <div class="how-step-icon-wrap">
-                        <span class="how-step-icon">🐾</span>
-                        <span class="how-step-number">02</span>
-                    </div>
+                    <div class="how-step-num-big">02</div>
                     <div class="how-step-connector"></div>
                     <h3 class="how-step-title">We Pick Up</h3>
                     <p class="how-step-desc">We'll come to your door to pick up your pup — or you can drop them off. Either way works perfectly for us!</p>
@@ -414,10 +408,7 @@
 
                 <!-- Step 3 -->
                 <div class="how-step">
-                    <div class="how-step-icon-wrap">
-                        <span class="how-step-icon">🏡</span>
-                        <span class="how-step-number">03</span>
-                    </div>
+                    <div class="how-step-num-big">03</div>
                     <div class="how-step-connector"></div>
                     <h3 class="how-step-title">Tail-Wagging Care</h3>
                     <p class="how-step-desc">Your dog gets walks, cuddles, playtime, and all the love they deserve in a safe home environment — just like their own!</p>
@@ -425,10 +416,7 @@
 
                 <!-- Step 4 -->
                 <div class="how-step">
-                    <div class="how-step-icon-wrap">
-                        <span class="how-step-icon">📸</span>
-                        <span class="how-step-number">04</span>
-                    </div>
+                    <div class="how-step-num-big">04</div>
                     <h3 class="how-step-title">Happy Updates</h3>
                     <p class="how-step-desc">We send you photo and video updates throughout the day so you can relax knowing your pup is having a blast!</p>
                 </div>
@@ -444,58 +432,34 @@
 
         <div class="contact-container">
 
-            <!-- Left: form -->
+            <!-- Left: Chat options -->
             <div class="contact-form-wrap">
                 <span class="contact-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">Get In Touch</span>
-                <h2 class="contact-heading">Ready to Book? <em>Let's Chat!</em></h2>
-                <p class="contact-subtext">Send us a message and we'll get back to you within a few hours. We'd love to meet your pup!</p>
+                <h2 class="contact-heading">Ready to Book?<br><em>Let's Chat Directly!</em></h2>
+                <p class="contact-subtext">Skip the forms! Chat directly with Evan & Gladys to book sitting or walking for your pup. We usually respond in under 15 minutes! 🐶</p>
 
-                <form class="contact-form" id="contactForm" novalidate>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="contactName">Your Name</label>
-                            <input type="text" id="contactName" name="name" placeholder="e.g. Sarah Johnson" required autocomplete="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="contactEmail">Email Address</label>
-                            <input type="email" id="contactEmail" name="email" placeholder="hello@example.com" required autocomplete="email">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="contactDog">Dog's Name</label>
-                            <input type="text" id="contactDog" name="dog" placeholder="e.g. Max" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactService">Service Needed</label>
-                            <select id="contactService" name="service">
-                                <option value="">Select a service…</option>
-                                <option value="walking">Dog Walking</option>
-                                <option value="sitting">Pet Sitting</option>
-                                <option value="feeding">Feeding & Care</option>
-                                <option value="overnight">Overnight Stay</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group form-group--full">
-                        <label for="contactMessage">Message</label>
-                        <textarea id="contactMessage" name="message" rows="4" placeholder="Tell us about your dog and your dates…" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-contact-submit" id="btnContactSubmit">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-icon">🐾</span>
-                    </button>
-                    <p class="form-success" id="formSuccess">Thanks! We'll be in touch very soon 🐶</p>
-                </form>
+                <div class="contact-chat-options">
+                    <a href="https://wa.me/61400000000" target="_blank" rel="noopener" class="btn-chat btn-chat--whatsapp">
+                        <span class="btn-chat-icon">💬</span>
+                        <span class="btn-chat-text">Chat on WhatsApp</span>
+                    </a>
+                    
+                    <a href="https://instagram.com/" target="_blank" rel="noopener" class="btn-chat btn-chat--instagram">
+                        <span class="btn-chat-icon">📸</span>
+                        <span class="btn-chat-text">Message on Instagram</span>
+                    </a>
+                </div>
+
+                <div class="contact-alternative">
+                    <p>Or send us a quick email at: <a href="mailto:hello@firulais.com.au">hello@firulais.com.au</a></p>
+                </div>
             </div>
 
             <!-- Right: map & info -->
             <div class="contact-info-wrap">
-                <!-- Map placeholder -->
+                <!-- Map placeholder (now embedding a real Google Map) -->
                 <div class="contact-map-placeholder" id="contactMap">
-                    <span class="map-pin-icon">📍</span>
-                    <span class="map-label">Hobart, TAS · Australia</span>
-                    <a href="https://maps.google.com/?q=Hobart,TAS,Australia,7000" target="_blank" rel="noopener" class="map-link-btn">Open in Maps</a>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46726.06456073177!2d147.28489721750244!3d-42.88213640024479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ca429fc7f79435b%3A0x503c94dd0de1240!2sHobart%20TAS%207000%2C%20Australia!5e0!3m2!1sen!2sau!4v1710000000000!5m2!1sen!2sau" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <!-- Info cards -->
@@ -518,7 +482,7 @@
                         <span class="cic-icon">📱</span>
                         <div>
                             <strong>Quick Reach</strong>
-                            <p>Via the form or<br>WhatsApp & Instagram</p>
+                            <p>Directly via WhatsApp or<br>Instagram for instant booking</p>
                         </div>
                     </div>
                 </div>

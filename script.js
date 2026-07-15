@@ -394,48 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* ==========================================================================
-       8. Contact Form — client-side handling
-       ========================================================================== */
-    const contactForm    = document.getElementById('contactForm');
-    const formSuccess    = document.getElementById('formSuccess');
-    const btnSubmit      = document.getElementById('btnContactSubmit');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Basic validation: check required fields
-            const requiredFields = contactForm.querySelectorAll('[required]');
-            let allValid = true;
-
-            requiredFields.forEach(field => {
-                field.style.borderColor = '';
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#e57373';
-                    allValid = false;
-                }
-            });
-
-            if (!allValid) return;
-
-            // Simulate sending (replace with real back-end / EmailJS later)
-            const originalText = btnSubmit.querySelector('.btn-text').textContent;
-            btnSubmit.querySelector('.btn-text').textContent = 'Sending…';
-            btnSubmit.disabled = true;
-
-            setTimeout(() => {
-                contactForm.reset();
-                btnSubmit.querySelector('.btn-text').textContent = originalText;
-                btnSubmit.disabled = false;
-
-                if (formSuccess) {
-                    formSuccess.classList.add('visible');
-                    setTimeout(() => formSuccess.classList.remove('visible'), 6000);
-                }
-            }, 1400);
-        });
-    }
 
 
     /* ==========================================================================
