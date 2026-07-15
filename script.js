@@ -14,13 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const dogWrapper = document.getElementById('dogWrapper');
     const dogVideo = document.getElementById('dogVideo');
     
-    // Playlist containing the 5 promotional videos
+    // Playlist containing the 3 promotional videos
     const videoPlaylist = [
         'assets/video1.mp4',
         'assets/video2.mp4',
-        'assets/video3.mp4',
-        'assets/video4.mp4',
-        'assets/video5.mp4'
+        'assets/video3.mp4'
     ];
     let currentVideoIndex = 0;
     
