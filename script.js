@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
        4. Scroll-Reveal for About & Services sections
        ========================================================================== */
     const revealItems = document.querySelectorAll(
-        '.about-images, .about-content, .services-header, .service-card, .services-cta'
+        '.about-images, .about-content, .services-header, .service-card, .services-cta, .stat-item'
     );
 
     if (revealItems.length > 0) {
@@ -179,5 +179,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         revealItems.forEach(el => revealObserver.observe(el));
+    }
+
+    /* ==========================================================================
+       5. Animated Number Counter for Stats Strip
+       ========================================================================== */
+    /**
+     * Animates a number from 0 to target over ~1.4s using easeOutQuart
+     * @param {HTMLElement} el - The .stat-count span element
+     * @param {number} target  - Final numeric value
+     * @param {boolean} isDecimal - If true, displays value as X.X (e.g. 4.9)
+     */
+    function animateCount(el, target, isDecimal) {
+        const duration = 1400;
+        const startTime = performance.now();
+
+        const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
+
+        const tick = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutQuart(progress);
+            const current = eased * target;
+
+            if (isDecimal) {
+                // Show as e.g. "4.9" (divide internal 49 by 10)
+                el.textContent = (current / 10).toFixed(1);
+            } else {
+                el.textContent = Math.round(current);
+            }
+
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+    }
+
+    // Observe stat items to trigger counter on first visibility
+    const statItems = document.querySelectorAll('.stat-item');
+
+    if (statItems.length > 0) {
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const item     = entry.target;
+                    const target   = parseInt(item.dataset.target, 10);
+                    const isDecimal = item.dataset.decimal === 'true';
+                    const countEl  = item.querySelector('.stat-count');
+
+                    if (countEl && !item.dataset.counted) {
+                        item.dataset.counted = 'true'; // Prevent re-triggering
+                        animateCount(countEl, target, isDecimal);
+                    }
+
+                    statObserver.unobserve(item);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statItems.forEach(el => statObserver.observe(el));
     }
 });
