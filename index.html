@@ -32,11 +32,12 @@
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-cta">
-                <a href="#" class="btn-cta">Book Appointment</a>
+                <a href="#contact" class="btn-cta">Book Appointment</a>
             </div>
         </div>
     </header>
@@ -387,6 +388,357 @@
         <button class="lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
         <div class="lightbox-dots" id="lightboxDots"></div>
     </div>
+
+
+    <!-- ================================================================
+         How It Works Section
+    ================================================================ -->
+    <section class="how-section" id="how">
+        <!-- Floating decorative blobs -->
+        <div class="how-blob how-blob--1"></div>
+        <div class="how-blob how-blob--2"></div>
+
+        <div class="how-container">
+
+            <div class="how-header">
+                <span class="how-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">Simple Process</span>
+                <h2 class="how-heading">Getting Started is <em>Easy!</em></h2>
+                <p class="how-subtext">We make it super simple to book care for your furry family member — no stress, no fuss.</p>
+            </div>
+
+            <div class="how-steps">
+
+                <!-- Step 1 -->
+                <div class="how-step">
+                    <div class="how-step-icon-wrap">
+                        <span class="how-step-icon">📋</span>
+                        <span class="how-step-number">01</span>
+                    </div>
+                    <div class="how-step-connector"></div>
+                    <h3 class="how-step-title">Book Online</h3>
+                    <p class="how-step-desc">Fill out our quick booking form with your dog's details, preferred dates, and any special needs. Takes less than 2 minutes!</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="how-step">
+                    <div class="how-step-icon-wrap">
+                        <span class="how-step-icon">🐾</span>
+                        <span class="how-step-number">02</span>
+                    </div>
+                    <div class="how-step-connector"></div>
+                    <h3 class="how-step-title">We Pick Up</h3>
+                    <p class="how-step-desc">We'll come to your door to pick up your pup — or you can drop them off. Either way works perfectly for us!</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="how-step">
+                    <div class="how-step-icon-wrap">
+                        <span class="how-step-icon">🏡</span>
+                        <span class="how-step-number">03</span>
+                    </div>
+                    <div class="how-step-connector"></div>
+                    <h3 class="how-step-title">Tail-Wagging Care</h3>
+                    <p class="how-step-desc">Your dog gets walks, cuddles, playtime, and all the love they deserve in a safe home environment — just like their own!</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="how-step">
+                    <div class="how-step-icon-wrap">
+                        <span class="how-step-icon">📸</span>
+                        <span class="how-step-number">04</span>
+                    </div>
+                    <h3 class="how-step-title">Happy Updates</h3>
+                    <p class="how-step-desc">We send you photo and video updates throughout the day so you can relax knowing your pup is having a blast!</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Contact & Location Section
+    ================================================================ -->
+    <section class="contact-section" id="contact">
+
+        <div class="contact-container">
+
+            <!-- Left: form -->
+            <div class="contact-form-wrap">
+                <span class="contact-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">Get In Touch</span>
+                <h2 class="contact-heading">Ready to Book? <em>Let's Chat!</em></h2>
+                <p class="contact-subtext">Send us a message and we'll get back to you within a few hours. We'd love to meet your pup!</p>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="e.g. Sarah Johnson" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="hello@example.com" required autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactDog">Dog's Name</label>
+                            <input type="text" id="contactDog" name="dog" placeholder="e.g. Max" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactService">Service Needed</label>
+                            <select id="contactService" name="service">
+                                <option value="">Select a service…</option>
+                                <option value="walking">Dog Walking</option>
+                                <option value="sitting">Pet Sitting</option>
+                                <option value="feeding">Feeding & Care</option>
+                                <option value="overnight">Overnight Stay</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group--full">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" rows="4" placeholder="Tell us about your dog and your dates…" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-contact-submit" id="btnContactSubmit">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon">🐾</span>
+                    </button>
+                    <p class="form-success" id="formSuccess">Thanks! We'll be in touch very soon 🐶</p>
+                </form>
+            </div>
+
+            <!-- Right: map & info -->
+            <div class="contact-info-wrap">
+                <!-- Map placeholder -->
+                <div class="contact-map-placeholder" id="contactMap">
+                    <span class="map-pin-icon">📍</span>
+                    <span class="map-label">Hobart, TAS · Australia</span>
+                    <a href="https://maps.google.com/?q=Hobart,TAS,Australia,7000" target="_blank" rel="noopener" class="map-link-btn">Open in Maps</a>
+                </div>
+
+                <!-- Info cards -->
+                <div class="contact-info-cards">
+                    <div class="contact-info-card">
+                        <span class="cic-icon">📍</span>
+                        <div>
+                            <strong>Location</strong>
+                            <p>Hobart Town, TAS<br>Australia 7000</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <span class="cic-icon">🕐</span>
+                        <div>
+                            <strong>Hours</strong>
+                            <p>Mon – Sun: 7 am – 8 pm<br>Available on public holidays</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <span class="cic-icon">📱</span>
+                        <div>
+                            <strong>Quick Reach</strong>
+                            <p>Via the form or<br>WhatsApp & Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+         FAQ Section
+    ================================================================ -->
+    <section class="faq-section" id="faq">
+
+        <div class="faq-container">
+
+            <div class="faq-header">
+                <span class="faq-label"><img src="assets/logo-mini.png" alt="" class="about-label-icon">FAQ</span>
+                <h2 class="faq-heading">Got Questions? <em>We've Got Answers.</em></h2>
+                <p class="faq-subtext">Everything you need to know before booking your pup's first stay with us.</p>
+            </div>
+
+            <div class="faq-list" id="faqList">
+
+                <div class="faq-item" id="faq-1">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
+                        <span>Do you care for all dog breeds and sizes?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-1" role="region" hidden>
+                        <p>Absolutely! We welcome dogs of all breeds, sizes, and temperaments. Every pup gets the same love and attention, from tiny Chihuahuas to big, bouncy Labradors.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-2">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
+                        <span>Is pick-up and drop-off included in the price?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-2" role="region" hidden>
+                        <p>Yes! We offer complimentary pick-up and drop-off within the Hobart area. We'll come to your door so you don't have to worry about a thing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-3">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
+                        <span>Will my dog be alone at any point during the day?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-3" role="region" hidden>
+                        <p>No — never for long periods. Evan and Gladys are home-based carers, which means your dog is always in a loving home environment with someone present. We treat every dog like family.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-4">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-4">
+                        <span>Do you send updates while I'm away?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-4" role="region" hidden>
+                        <p>Of course! We send photo and video updates throughout the day so you always know your pup is happy and safe. You'll probably miss them more than they miss you!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-5">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-5">
+                        <span>What if my dog has special dietary or medical needs?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-5" role="region" hidden>
+                        <p>No problem at all. Just let us know in advance and we'll follow your dog's routine to the letter — feeding schedule, medication, dietary restrictions, you name it.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-6">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-6">
+                        <span>How do I pay and when?</span>
+                        <span class="faq-chevron">&#8964;</span>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-6" role="region" hidden>
+                        <p>We accept bank transfer and cash. Payment is arranged once the booking is confirmed — usually a deposit upfront and the remainder on the day of pick-up.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Final CTA — "Start Your Journey"
+    ================================================================ -->
+    <section class="cta-section" id="cta">
+        <!-- Decorative paw prints -->
+        <img src="assets/logo-mini.png" alt="" class="cta-bg-paw cta-paw--tl" aria-hidden="true">
+        <img src="assets/logo-mini.png" alt="" class="cta-bg-paw cta-paw--br" aria-hidden="true">
+
+        <div class="cta-container">
+
+            <div class="cta-content">
+                <span class="cta-label">Ready When You Are</span>
+                <h2 class="cta-heading">Start Your <em>Journey</em><br>with Firulais Pet Care!</h2>
+                <p class="cta-subtext">From wagging tails to gentle purrs — we're here for every pet in your family. Let's make your dog's day unforgettable.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-cta-primary">Book Now 🐾</a>
+                    <a href="tel:+61" class="btn-cta-secondary">
+                        <span class="cta-phone-icon">📞</span>
+                        Schedule a Call
+                    </a>
+                </div>
+            </div>
+
+            <!-- Decorative image area -->
+            <div class="cta-image-area">
+                <div class="cta-img-placeholder">
+                    <span class="cta-img-emoji">🐶</span>
+                    <span class="cta-img-emoji cta-img-emoji--2">🐾</span>
+                    <span class="cta-img-emoji cta-img-emoji--3">❤️</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+         Footer
+    ================================================================ -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-container">
+
+            <!-- Column 1: Brand -->
+            <div class="footer-brand">
+                <a href="#hero" class="footer-logo">
+                    <img src="assets/logo-mini.png" alt="Firulais Pet Care" class="footer-logo-img">
+                    <span class="footer-logo-text">Firulais Pet Care.</span>
+                </a>
+                <p class="footer-tagline">Every tail tells a story.<br>We make sure it's a happy one.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="footer-social-link" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Services -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Our Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">🦮 Dog Walking</a></li>
+                    <li><a href="#services">🏠 Pet Sitting</a></li>
+                    <li><a href="#services">🍽️ Feeding & Care</a></li>
+                    <li><a href="#services">🌙 Overnight Stay</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact info -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Find Us</h4>
+                <ul class="footer-contact-list">
+                    <li>
+                        <span class="fci-icon">📍</span>
+                        <span>Hobart Town, TAS<br>Australia 7000</span>
+                    </li>
+                    <li>
+                        <span class="fci-icon">🕐</span>
+                        <span>Mon – Sun · 7 am – 8 pm</span>
+                    </li>
+                    <li>
+                        <span class="fci-icon">📧</span>
+                        <a href="mailto:hello@firulais.com.au">hello@firulais.com.au</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer bottom bar -->
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2025 Firulais Pet Care · Hobart, Tasmania · Made with ❤️ for every pup.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Main JavaScript for interactions and mouse trail -->
     <script src="script.js"></script>

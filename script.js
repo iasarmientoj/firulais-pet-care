@@ -330,4 +330,137 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowRight')   showItem(currentIndex + 1);
         });
     }
+
+
+    /* ==========================================================================
+       7. FAQ Accordion
+       ========================================================================== */
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const btn    = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        // Wrap answer content in a div so grid-template-rows animation works
+        if (answer && !answer.querySelector(':scope > div')) {
+            const wrapper = document.createElement('div');
+            while (answer.firstChild) wrapper.appendChild(answer.firstChild);
+            answer.appendChild(wrapper);
+        }
+
+        // Remove the HTML `hidden` attribute — visibility controlled by CSS class instead
+        if (answer) answer.removeAttribute('hidden');
+
+        btn.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+
+            // Close all other open items (accordion behaviour)
+            faqItems.forEach(other => {
+                if (other !== item) {
+                    other.classList.remove('open');
+                    other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle the clicked item
+            if (isOpen) {
+                item.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+
+    /* ==========================================================================
+       8. Contact Form — client-side handling
+       ========================================================================== */
+    const contactForm    = document.getElementById('contactForm');
+    const formSuccess    = document.getElementById('formSuccess');
+    const btnSubmit      = document.getElementById('btnContactSubmit');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Basic validation: check required fields
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            let allValid = true;
+
+            requiredFields.forEach(field => {
+                field.style.borderColor = '';
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#e57373';
+                    allValid = false;
+                }
+            });
+
+            if (!allValid) return;
+
+            // Simulate sending (replace with real back-end / EmailJS later)
+            const originalText = btnSubmit.querySelector('.btn-text').textContent;
+            btnSubmit.querySelector('.btn-text').textContent = 'Sending…';
+            btnSubmit.disabled = true;
+
+            setTimeout(() => {
+                contactForm.reset();
+                btnSubmit.querySelector('.btn-text').textContent = originalText;
+                btnSubmit.disabled = false;
+
+                if (formSuccess) {
+                    formSuccess.classList.add('visible');
+                    setTimeout(() => formSuccess.classList.remove('visible'), 6000);
+                }
+            }, 1400);
+        });
+    }
+
+
+    /* ==========================================================================
+       9. Extend reveal observer to include new sections
+       ========================================================================== */
+    const newSectionEls = document.querySelectorAll(
+        '.how-header, .how-step, .contact-form-wrap, .contact-info-wrap, ' +
+        '.faq-header, .faq-item, .cta-content, .cta-image-area'
+    );
+
+    if (newSectionEls.length > 0) {
+        const newRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // Stagger each element slightly based on its position index
+                    const delay = entry.target.dataset.revealDelay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    newRevealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0 });
+
+        newSectionEls.forEach((el, i) => {
+            // Set initial hidden state and a small stagger delay
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(22px)';
+            el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+            el.dataset.revealDelay = (i % 4) * 80; // stagger within each row
+            newRevealObserver.observe(el);
+        });
+
+        // Add a CSS rule for .visible on these elements dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            .how-header.visible, .how-step.visible,
+            .contact-form-wrap.visible, .contact-info-wrap.visible,
+            .faq-header.visible, .faq-item.visible,
+            .cta-content.visible, .cta-image-area.visible {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
 });
