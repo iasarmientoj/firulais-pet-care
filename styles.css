@@ -1806,8 +1806,8 @@ html, body {
 .gallery-row {
     display: flex;
     gap: 14px;
-    align-items: flex-start;  /* Items sit at their own top after margin offset */
-    margin-bottom: 14px;
+    align-items: flex-start;
+    margin-bottom: 0; /* Rows stay close; spacing handled by item margin-top offsets */
 }
 
 .gallery-row:last-child {
@@ -1817,7 +1817,7 @@ html, body {
 /* Each item takes equal width in its row */
 .gallery-row .gallery-item {
     flex: 1;
-    height: 210px;
+    height: 280px; /* Taller / more vertical cards */
 }
 
 /*
@@ -1825,21 +1825,20 @@ html, body {
    Items: 1(top) 2(mid) 3(bottom/center) 4(mid) 5(top)
 */
 .gallery-row--1 .gallery-item:nth-child(1) { margin-top: 0px; }
-.gallery-row--1 .gallery-item:nth-child(2) { margin-top: 35px; }
-.gallery-row--1 .gallery-item:nth-child(3) { margin-top: 65px; }
-.gallery-row--1 .gallery-item:nth-child(4) { margin-top: 35px; }
+.gallery-row--1 .gallery-item:nth-child(2) { margin-top: 28px; }
+.gallery-row--1 .gallery-item:nth-child(3) { margin-top: 52px; }
+.gallery-row--1 .gallery-item:nth-child(4) { margin-top: 28px; }
 .gallery-row--1 .gallery-item:nth-child(5) { margin-top: 0px; }
 
 /*
-   Row 2 — Mirror V: starts where row 1 left off visually.
-   Items: 6(low) 7(mid-low) 8(lowest) 9(mid-low) 10(low)
-   This continues the downward arrow creating a > shape overall.
+   Row 2 — deeper V (continuation of arrow downward).
+   Starts 16px below row 1 to keep rows visually close.
 */
-.gallery-row--2 .gallery-item:nth-child(1) { margin-top: 30px; }
-.gallery-row--2 .gallery-item:nth-child(2) { margin-top: 60px; }
-.gallery-row--2 .gallery-item:nth-child(3) { margin-top: 90px; }
-.gallery-row--2 .gallery-item:nth-child(4) { margin-top: 60px; }
-.gallery-row--2 .gallery-item:nth-child(5) { margin-top: 30px; }
+.gallery-row--2 .gallery-item:nth-child(1) { margin-top: 16px; }
+.gallery-row--2 .gallery-item:nth-child(2) { margin-top: 40px; }
+.gallery-row--2 .gallery-item:nth-child(3) { margin-top: 64px; }
+.gallery-row--2 .gallery-item:nth-child(4) { margin-top: 40px; }
+.gallery-row--2 .gallery-item:nth-child(5) { margin-top: 16px; }
 
 /* Gallery Item — base styles (shared by both rows) */
 .gallery-item {
