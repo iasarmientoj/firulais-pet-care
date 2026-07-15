@@ -614,6 +614,342 @@ html, body {
 }
 
 /* ==========================================================================
+   About Us Section
+   ========================================================================== */
+.about-section {
+    position: relative;
+    width: 100%;
+    background-color: #fff8e7; /* Very light warm cream — contrasts with yellow hero */
+    padding: 110px 0 120px;
+    overflow: hidden;
+}
+
+/* Decorative background paw prints */
+.about-bg-paw {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.07;
+}
+
+.about-bg-paw img {
+    display: block;
+    width: 100%;
+}
+
+.about-bg-paw--1 {
+    width: 220px;
+    top: -30px;
+    right: 5%;
+    rotate: 30deg;
+}
+
+.about-bg-paw--2 {
+    width: 160px;
+    bottom: 40px;
+    left: 2%;
+    rotate: -60deg;
+}
+
+/* Main wrapper — two-column layout */
+.about-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+/* ---- LEFT: Stacked image placeholders ---- */
+.about-images {
+    position: relative;
+    height: 480px;
+}
+
+/* Main (large) image placeholder — top-left */
+.about-img-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 76%;
+    height: 78%;
+    z-index: 1;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(77, 38, 15, 0.13);
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+}
+
+.about-img-main:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 28px 60px rgba(77, 38, 15, 0.2);
+}
+
+/* Secondary (smaller) image placeholder — bottom-right, overlapping */
+.about-img-secondary {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 52%;
+    height: 52%;
+    z-index: 2;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 35px rgba(77, 38, 15, 0.18);
+    border: 5px solid #fff8e7;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+}
+
+.about-img-secondary:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 22px 50px rgba(77, 38, 15, 0.22);
+}
+
+/* Shared placeholder style */
+.about-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fedc56 0%, #f5c842 50%, #e8b830 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 3px dashed rgba(77, 38, 15, 0.25);
+}
+
+.about-img-icon {
+    font-size: 48px;
+    opacity: 0.6;
+    display: block;
+    line-height: 1;
+}
+
+.about-img-placeholder p {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-brown);
+    opacity: 0.5;
+    text-align: center;
+    padding: 0 12px;
+    letter-spacing: 0.3px;
+}
+
+/* ---- RIGHT: Text content ---- */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* "About Us" small label — accent colored like in reference */
+.about-label {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--light-brown);
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+    display: block;
+    position: relative;
+    padding-left: 20px;
+}
+
+.about-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 3px;
+    background-color: var(--primary-yellow);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--light-brown);
+}
+
+/* Main heading */
+.about-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(34px, 3.5vw, 54px);
+    font-weight: 700;
+    color: var(--dark-brown);
+    line-height: 1.15;
+    margin-bottom: 28px;
+}
+
+/* Description paragraph */
+.about-description {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: #6b4c2a;
+    margin-bottom: 36px;
+    max-width: 520px;
+}
+
+/* Highlights checklist */
+.about-highlights {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+    margin-bottom: 44px;
+}
+
+.about-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--dark-brown);
+}
+
+/* Checkmark badge */
+.about-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 50%;
+    background-color: var(--primary-yellow);
+    color: var(--dark-brown);
+    font-size: 13px;
+    font-weight: 900;
+    border: 2px solid var(--dark-brown);
+    line-height: 1;
+}
+
+/* About CTA button */
+.btn-about {
+    display: inline-block;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary-yellow);
+    background-color: var(--dark-brown);
+    padding: 15px 38px;
+    border-radius: 50px;
+    border: 2.5px solid var(--dark-brown);
+    box-shadow: 0 5px 15px rgba(77, 38, 15, 0.18);
+    align-self: flex-start;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-about:hover {
+    background-color: transparent;
+    color: var(--dark-brown);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(77, 38, 15, 0.24);
+}
+
+.btn-about:active {
+    transform: translateY(-1px);
+}
+
+/* Scroll-in reveal animation for About section */
+.about-images,
+.about-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.about-images.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.about-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+/* About responsive — Tablet */
+@media (max-width: 992px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 0 40px;
+    }
+
+    .about-images {
+        height: 380px;
+        max-width: 520px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .about-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-label {
+        padding-left: 0;
+    }
+
+    .about-label::before {
+        display: none;
+    }
+
+    .about-description {
+        max-width: 100%;
+    }
+
+    .about-highlights {
+        justify-items: flex-start;
+    }
+
+    .btn-about {
+        align-self: center;
+    }
+}
+
+/* About responsive — Mobile */
+@media (max-width: 576px) {
+    .about-section {
+        padding: 80px 0 90px;
+    }
+
+    .about-container {
+        padding: 0 24px;
+        gap: 40px;
+    }
+
+    .about-images {
+        height: 300px;
+    }
+
+    .about-img-icon {
+        font-size: 36px;
+    }
+
+    .about-heading {
+        font-size: 32px;
+    }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .about-description {
+        font-size: 15.5px;
+    }
+}
+
+/* ==========================================================================
    Mouse Trail Paw Print Elements
    ========================================================================== */
 .paw-trail-print {

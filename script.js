@@ -140,4 +140,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* ==========================================================================
+       3. Scroll-Reveal for About Section (and future sections)
+       ========================================================================== */
+    const revealTargets = document.querySelectorAll('.about-images, .about-content');
+
+    if (revealTargets.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, {
+            threshold: 0.15 // Trigger when 15% of the element is in view
+        });
+
+        revealTargets.forEach(el => revealObserver.observe(el));
+    }
 });
