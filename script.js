@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
        4. Scroll-Reveal for About & Services sections
        ========================================================================== */
     const revealItems = document.querySelectorAll(
-        '.about-images, .about-content, .services-header, .service-card, .services-cta, .stat-item, .gallery-header, .gallery-item'
+        '.about-images, .about-content, .services-header, .service-card, .services-cta, .stat-item, .gallery-header, .gallery-row'
     );
 
     if (revealItems.length > 0) {
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.12 // Trigger when 12% of the element is in view
+            threshold: 0 // Trigger as soon as any part of the element enters the viewport
         });
 
         revealItems.forEach(el => revealObserver.observe(el));
@@ -267,6 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { icon: '🏞️', label: 'Photo 7' },
             { icon: '🌱', label: 'Photo 8' },
             { icon: '❤️', label: 'Photo 9' },
+            { icon: '⭐', label: 'Photo 10' },
         ];
 
         // Build indicator dots

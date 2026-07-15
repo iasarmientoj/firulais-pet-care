@@ -1725,7 +1725,7 @@ html, body {
 .gallery-section {
     position: relative;
     width: 100%;
-    background-color: var(--primary-yellow);
+    background-color: #fff8e7; /* Cream, same as About & Services */
     padding: 110px 0 120px;
     overflow: hidden;
 }
@@ -1802,37 +1802,66 @@ html, body {
     margin: 0 auto;
 }
 
-/* ---- Masonry Grid ---- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 200px;
-    gap: 16px;
+/* ---- Two-row V-arrow layout ---- */
+.gallery-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;  /* Items sit at their own top after margin offset */
+    margin-bottom: 14px;
 }
 
-/* Gallery Item — base */
+.gallery-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Each item takes equal width in its row */
+.gallery-row .gallery-item {
+    flex: 1;
+    height: 210px;
+}
+
+/*
+   Row 1 — V shape: outer items at top, center item lowest.
+   Items: 1(top) 2(mid) 3(bottom/center) 4(mid) 5(top)
+*/
+.gallery-row--1 .gallery-item:nth-child(1) { margin-top: 0px; }
+.gallery-row--1 .gallery-item:nth-child(2) { margin-top: 35px; }
+.gallery-row--1 .gallery-item:nth-child(3) { margin-top: 65px; }
+.gallery-row--1 .gallery-item:nth-child(4) { margin-top: 35px; }
+.gallery-row--1 .gallery-item:nth-child(5) { margin-top: 0px; }
+
+/*
+   Row 2 — Mirror V: starts where row 1 left off visually.
+   Items: 6(low) 7(mid-low) 8(lowest) 9(mid-low) 10(low)
+   This continues the downward arrow creating a > shape overall.
+*/
+.gallery-row--2 .gallery-item:nth-child(1) { margin-top: 30px; }
+.gallery-row--2 .gallery-item:nth-child(2) { margin-top: 60px; }
+.gallery-row--2 .gallery-item:nth-child(3) { margin-top: 90px; }
+.gallery-row--2 .gallery-item:nth-child(4) { margin-top: 60px; }
+.gallery-row--2 .gallery-item:nth-child(5) { margin-top: 30px; }
+
+/* Gallery Item — base styles (shared by both rows) */
 .gallery-item {
     position: relative;
     border-radius: 18px;
     overflow: hidden;
     cursor: pointer;
     opacity: 0;
-    transform: scale(0.94) translateY(20px);
+    transform: scale(0.94) translateY(16px);
     transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.4s ease;
 }
 
-/* Stagger */
-.gallery-item:nth-child(1)  { transition-delay: 0.00s; }
-.gallery-item:nth-child(2)  { transition-delay: 0.07s; }
-.gallery-item:nth-child(3)  { transition-delay: 0.14s; }
-.gallery-item:nth-child(4)  { transition-delay: 0.21s; }
-.gallery-item:nth-child(5)  { transition-delay: 0.28s; }
-.gallery-item:nth-child(6)  { transition-delay: 0.35s; }
-.gallery-item:nth-child(7)  { transition-delay: 0.42s; }
-.gallery-item:nth-child(8)  { transition-delay: 0.49s; }
-.gallery-item:nth-child(9)  { transition-delay: 0.56s; }
+/* Stagger delays (nth-child within each .gallery-row) */
+.gallery-row .gallery-item:nth-child(1) { transition-delay: 0.00s; }
+.gallery-row .gallery-item:nth-child(2) { transition-delay: 0.08s; }
+.gallery-row .gallery-item:nth-child(3) { transition-delay: 0.16s; }
+.gallery-row .gallery-item:nth-child(4) { transition-delay: 0.24s; }
+.gallery-row .gallery-item:nth-child(5) { transition-delay: 0.32s; }
 
-.gallery-item.visible {
+/* When the row enters the viewport (.visible added by IntersectionObserver),
+   all child items animate in with their respective stagger delays */
+.gallery-row.visible .gallery-item {
     opacity: 1;
     transform: scale(1) translateY(0);
 }
@@ -1842,11 +1871,8 @@ html, body {
     z-index: 2;
 }
 
-/* Size variants */
-.gallery-item--tall  { grid-row: span 2; }
-.gallery-item--wide  { grid-column: span 2; }
-
 /* Placeholder fill */
+
 .gallery-placeholder {
     width: 100%;
     height: 100%;
@@ -1918,28 +1944,35 @@ html, body {
 /* Gallery responsive — Tablet */
 @media (max-width: 992px) {
     .gallery-container {
-        padding: 0 30px;
+        padding: 0 24px;
     }
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 180px;
-        gap: 12px;
+    .gallery-row .gallery-item {
+        height: 170px;
     }
+    /* Reduce V-depth on tablet */
+    .gallery-row--1 .gallery-item:nth-child(2) { margin-top: 24px; }
+    .gallery-row--1 .gallery-item:nth-child(3) { margin-top: 44px; }
+    .gallery-row--1 .gallery-item:nth-child(4) { margin-top: 24px; }
+    .gallery-row--2 .gallery-item:nth-child(1) { margin-top: 20px; }
+    .gallery-row--2 .gallery-item:nth-child(2) { margin-top: 40px; }
+    .gallery-row--2 .gallery-item:nth-child(3) { margin-top: 60px; }
+    .gallery-row--2 .gallery-item:nth-child(4) { margin-top: 40px; }
+    .gallery-row--2 .gallery-item:nth-child(5) { margin-top: 20px; }
 }
 
-/* Gallery responsive — Mobile */
+/* Gallery responsive — Mobile: single column, no V effect */
 @media (max-width: 576px) {
     .gallery-section  { padding: 80px 0 90px; }
     .gallery-container { padding: 0 16px; }
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 150px;
+    .gallery-row {
+        flex-direction: column;
         gap: 10px;
     }
-    .gallery-item--tall,
-    .gallery-item--wide {
-        grid-row: span 1;
-        grid-column: span 1;
+    .gallery-row .gallery-item {
+        width: 100%;
+        height: 160px;
+        /* Reset all V-shape margins */
+        margin-top: 0 !important;
     }
     .gallery-ph-icon { font-size: 28px; }
 }
