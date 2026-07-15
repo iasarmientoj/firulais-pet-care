@@ -256,19 +256,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (galleryItems.length && lightboxOverlay) {
         let currentIndex = 0;
 
-        // Emoji icons matching each placeholder in order
+        // Gallery image sources — map index to file path
         const galleryData = [
-            { icon: '🐶', label: 'Photo 1' },
-            { icon: '🐾', label: 'Photo 2' },
-            { icon: '🦴', label: 'Photo 3' },
-            { icon: '🐕', label: 'Photo 4' },
-            { icon: '🐈', label: 'Photo 5' },
-            { icon: '🤝', label: 'Photo 6' },
-            { icon: '🏞️', label: 'Photo 7' },
-            { icon: '🌱', label: 'Photo 8' },
-            { icon: '❤️', label: 'Photo 9' },
-            { icon: '⭐', label: 'Photo 10' },
+            { src: 'assets/gallery-1.jpg',  alt: 'Firulais Pet Care — Photo 1'  },
+            { src: 'assets/gallery-2.jpg',  alt: 'Firulais Pet Care — Photo 2'  },
+            { src: 'assets/gallery-3.jpg',  alt: 'Firulais Pet Care — Photo 3'  },
+            { src: 'assets/gallery-4.jpg',  alt: 'Firulais Pet Care — Photo 4'  },
+            { src: 'assets/gallery-5.jpg',  alt: 'Firulais Pet Care — Photo 5'  },
+            { src: 'assets/gallery-6.jpg',  alt: 'Firulais Pet Care — Photo 6'  },
+            { src: 'assets/gallery-7.jpg',  alt: 'Firulais Pet Care — Photo 7'  },
+            { src: 'assets/gallery-8.jpg',  alt: 'Firulais Pet Care — Photo 8'  },
+            { src: 'assets/gallery-9.jpg',  alt: 'Firulais Pet Care — Photo 9'  },
+            { src: 'assets/gallery-10.jpg', alt: 'Firulais Pet Care — Photo 10' },
         ];
+
+        const lightboxContent  = document.getElementById('lightboxContent');
+        const lightboxPlaceholder = document.getElementById('lightboxPlaceholder');
+
+        // Create a persistent <img> for the lightbox (reuse, just change src)
+        const lightboxImg = document.createElement('img');
+        lightboxImg.className = 'lightbox-real-img';
+        lightboxImg.alt = '';
+        lightboxContent.appendChild(lightboxImg);
 
         // Build indicator dots
         galleryData.forEach((_, i) => {
@@ -283,8 +292,18 @@ document.addEventListener('DOMContentLoaded', () => {
         function showItem(index) {
             currentIndex = (index + galleryData.length) % galleryData.length;
             const data = galleryData[currentIndex];
-            lightboxIcon.textContent  = data.icon;
-            lightboxLabel.textContent = data.label;
+
+            // Hide the emoji placeholder, show the real image
+            if (lightboxPlaceholder) lightboxPlaceholder.style.display = 'none';
+            lightboxImg.src = data.src;
+            lightboxImg.alt = data.alt;
+
+            // Smooth image swap with a brief fade
+            lightboxImg.style.opacity = '0';
+            requestAnimationFrame(() => {
+                lightboxImg.style.transition = 'opacity 0.25s ease';
+                lightboxImg.style.opacity = '1';
+            });
 
             // Update dots
             lightboxDots.querySelectorAll('.lightbox-dot').forEach((d, i) => {
@@ -296,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function openLightbox(index) {
             showItem(index);
             lightboxOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent page scroll while open
+            document.body.style.overflow = 'hidden';
         }
 
         /** Close lightbox */
@@ -330,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowRight')   showItem(currentIndex + 1);
         });
     }
+
 
 
     /* ==========================================================================
