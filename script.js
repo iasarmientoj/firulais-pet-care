@@ -1,10 +1,84 @@
 /**
- * Firulais Pet Care - Interactive Mouse Paw Trail
- * Optimized for desktop users. Disables itself on touch screens to prevent issues.
+ * Firulais Pet Care - Interactive Effects
+ * 
+ * Includes:
+ * 1. Sequential Video Silhouette Mask Playlist (plays video -> shows static dog -> plays next video)
+ * 2. Mouse Movement Paw Trail (desktop only)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Detect touch-based mobile/tablet devices
+    
+    /* ==========================================================================
+       1. Sequential Video Silhouette Mask Playlist
+       ========================================================================== */
+    const dogWrapper = document.getElementById('dogWrapper');
+    const dogVideo = document.getElementById('dogVideo');
+    
+    // Playlist containing the 5 promotional videos
+    const videoPlaylist = [
+        'assets/video1.mp4',
+        'assets/video2.mp4',
+        'assets/video3.mp4',
+        'assets/video4.mp4',
+        'assets/video5.mp4'
+    ];
+    let currentVideoIndex = 0;
+    
+    if (dogWrapper && dogVideo) {
+        // Triggered when a video successfully starts rendering frames (buffering complete)
+        dogVideo.addEventListener('playing', () => {
+            dogWrapper.classList.add('video-active');
+        });
+        
+        // Triggered when the current video finishes playing
+        dogVideo.addEventListener('ended', () => {
+            // Smoothly cross-fade back to the static dog image
+            dogWrapper.classList.remove('video-active');
+            
+            // Wait 3 seconds showing the static dog, then play the next video
+            setTimeout(playNextVideo, 3000);
+        });
+        
+        // Start the first video 2.2 seconds after page load (allowing the slide-up animation to settle)
+        setTimeout(() => {
+            playVideo(0);
+        }, 2200);
+    }
+    
+    /**
+     * Loads and starts playing a video by playlist index
+     * @param {number} index - Index of the video in the videoPlaylist array
+     */
+    function playVideo(index) {
+        currentVideoIndex = index;
+        dogVideo.src = videoPlaylist[currentVideoIndex];
+        dogVideo.load();
+        
+        // Autoplay call wrapped in a promise catch to meet browser autoplay sandboxing
+        dogVideo.play().catch(err => {
+            console.warn("Autoplay was prevented by the browser. Waiting for user interaction.", err);
+            
+            // Fallback: Start the sequence on the first click anywhere on the page
+            const startOnInteraction = () => {
+                dogVideo.play().catch(e => console.log("Play failed:", e));
+                document.removeEventListener('click', startOnInteraction);
+            };
+            document.addEventListener('click', startOnInteraction);
+        });
+    }
+    
+    /**
+     * Advances to and plays the next video in sequence
+     */
+    function playNextVideo() {
+        const nextIndex = (currentVideoIndex + 1) % videoPlaylist.length;
+        playVideo(nextIndex);
+    }
+
+
+    /* ==========================================================================
+       2. Mouse Movement Paw Trail (Desktop Only)
+       ========================================================================== */
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches;
 
     if (!isTouchDevice) {
@@ -13,12 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let isLeftPaw = true;
         let firstMove = true;
         
-        // Define paw trail spacing (in pixels) to simulate distinct dog steps
-        const stepSpacing = 45; 
-        const pawSize = 24; // Width/height of the trail paw print
+        const stepSpacing = 45; // Minimum travel distance in pixels before stamping another paw
+        const pawSize = 24;     // Size of the footprint image
 
         window.addEventListener('mousemove', (e) => {
-            // Set initial position on first movement
             if (firstMove) {
                 lastX = e.clientX;
                 lastY = e.clientY;
@@ -26,21 +98,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Calculate distance since the last step
             const distance = Math.hypot(e.clientX - lastX, e.clientY - lastY);
 
             if (distance > stepSpacing) {
-                // Calculate direction angle of movement (in radians)
+                // Determine direction of mouse movement (radians to degrees)
                 const angleRad = Math.atan2(e.clientY - lastY, e.clientX - lastX);
-                // Convert to degrees and add 90 (to align the default upright orientation of the image)
-                let angleDeg = angleRad * (180 / Math.PI) + 90;
+                let angleDeg = angleRad * (180 / Math.PI) + 90; // Add 90 to align vertical image
                 
-                // Alternate between left and right paws
                 isLeftPaw = !isLeftPaw;
                 
-                // Add perpendicular offset for realistic left/right foot tracks
+                // Add perpendicular offsets for left vs right tracks
                 const perpAngle = angleRad + (isLeftPaw ? -1 : 1) * Math.PI / 2;
-                const offsetDist = 8; // Pixels away from the center path
+                const offsetDist = 8; 
                 const offsetX = Math.cos(perpAngle) * offsetDist;
                 const offsetY = Math.sin(perpAngle) * offsetDist;
                 
@@ -49,24 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 paw.src = 'assets/huella.png';
                 paw.className = 'paw-trail-print';
                 
-                // Calculate absolute page coordinates (supports page scrolling)
+                // Absolute positioning to handle window scrolling
                 const posX = e.pageX + offsetX - (pawSize / 2);
                 const posY = e.pageY + offsetY - (pawSize / 2);
                 
                 paw.style.left = `${posX}px`;
                 paw.style.top = `${posY}px`;
                 
-                // Add minor tilt for a organic feel
+                // Tweak angle slightly for a natural walking look
                 const finalRotate = angleDeg + (isLeftPaw ? -8 : 8);
                 paw.style.rotate = `${finalRotate}deg`;
                 
                 document.body.appendChild(paw);
                 
-                // Update tracker coordinates
+                // Keep track of current coordinates
                 lastX = e.clientX;
                 lastY = e.clientY;
                 
-                // Remove the paw print from DOM after fade-out animation completes (1.2 seconds)
+                // Remove the element after the CSS fade animation ends
                 setTimeout(() => {
                     paw.remove();
                 }, 1200);

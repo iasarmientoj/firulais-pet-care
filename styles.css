@@ -334,9 +334,8 @@ html, body {
     display: block;
     object-fit: contain;
     transform-origin: bottom center;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    /* Fades out smoothly to let the video shape show through fully */
-    animation: fadeOutStaticDog 1.5s ease-in-out forwards 1.5s;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s ease-in-out;
+    opacity: 1; /* Default visible */
 }
 
 /* Masked container for the video inside the dog silhouette */
@@ -357,12 +356,18 @@ html, body {
     -webkit-mask-position: bottom center;
     mask-position: bottom center;
     
-    /* Hover transition styling */
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    
-    /* Smooth video fade-in transition after slide-up finishes */
+    /* Hover and opacity transitions controlled via JS toggling */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s ease-in-out;
+    opacity: 0; /* Default hidden */
+}
+
+/* Transition states toggled via class 'video-active' on the wrapper */
+.dog-wrapper.video-active .dog-image {
     opacity: 0;
-    animation: fadeInVideoMask 1.5s ease-in-out forwards 1.5s;
+}
+
+.dog-wrapper.video-active .dog-video-mask {
+    opacity: 1;
 }
 
 /* Video element fitted inside the mask */
@@ -444,19 +449,6 @@ html, body {
     }
 }
 
-/* Smooth static dog dissolve */
-@keyframes fadeOutStaticDog {
-    to {
-        opacity: 0;
-    }
-}
-
-/* Smooth video silhouette fade-in */
-@keyframes fadeInVideoMask {
-    to {
-        opacity: 1;
-    }
-}
 
 /* Logo Entrance */
 @keyframes popInLogo {
