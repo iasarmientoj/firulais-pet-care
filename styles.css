@@ -1580,6 +1580,7 @@ body {
     }
 
     .logo-wrapper {
+        padding-top: 15px;
         padding-bottom: 0;
         padding-left: 0;
     }
@@ -1722,12 +1723,12 @@ body {
     }
 
     .logo-image {
-        max-width: 80%;
+        max-width: 55%;
         margin-bottom: 5px;
     }
 
     .logo-subtitle {
-        font-size: 16px;
+        font-size: 14px;
         margin-top: 5px;
         margin-bottom: 10px;
     }
@@ -1747,24 +1748,32 @@ body {
         padding: 0 20px;
     }
 
-    .logo-ctas .btn-primary,
-    .logo-ctas .btn-secondary {
+    .logo-ctas .btn-primary {
         width: 100%;
         text-align: center;
         padding: 12px 20px;
         font-size: 14px;
     }
 
+    .logo-ctas .btn-secondary {
+        display: none;
+    }
+
     .logo-services {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
         gap: 8px;
         font-size: 12px;
         line-height: 1.5;
         padding: 0 10px;
+        margin-bottom: 25px;
     }
 
     .logo-services .divider {
+        display: none;
+    }
+
+    .logo-services span:last-child {
         display: none;
     }
 
