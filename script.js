@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
        10. Scroll Spy - Active Navigation Link Highlight
        ========================================================================== */
     const navLinks = document.querySelectorAll('.nav-link');
-    const sectionsToSpy = ['hero', 'about', 'services', 'gallery', 'faq', 'contact'];
+    const sectionsToSpy = ['hero', 'about', 'services', 'gallery', 'contact', 'faq'];
 
     function scrollSpyHighlight() {
         let activeId = 'hero';
