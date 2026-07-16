@@ -329,6 +329,16 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', () => openLightbox(i));
         });
 
+        // Show More / Show Less functionality for mobile gallery
+        const btnGalleryMore = document.getElementById('btnGalleryMore');
+        const galleryGridWrapper = document.getElementById('galleryGridWrapper');
+        if (btnGalleryMore && galleryGridWrapper) {
+            btnGalleryMore.addEventListener('click', () => {
+                const isExpanded = galleryGridWrapper.classList.toggle('expanded');
+                btnGalleryMore.textContent = isExpanded ? 'Show Less' : 'Show More';
+            });
+        }
+
         // Close button
         lightboxClose.addEventListener('click', closeLightbox);
 
