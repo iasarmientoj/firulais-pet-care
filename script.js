@@ -442,4 +442,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(style);
     }
 
+    /* ==========================================================================
+       10. Scroll Spy - Active Navigation Link Highlight
+       ========================================================================== */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sectionsToSpy = ['hero', 'about', 'services', 'gallery', 'faq', 'contact'];
+
+    function scrollSpyHighlight() {
+        let activeId = 'hero';
+        let minDistance = Infinity;
+
+        sectionsToSpy.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) {
+                const rect = section.getBoundingClientRect();
+                // Proximity check: distance to viewport offset
+                const distance = Math.abs(rect.top - 180);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    activeId = id;
+                }
+            }
+        });
+
+        // Fallback for top of the page scroll position
+        if (window.scrollY < 60) {
+            activeId = 'hero';
+        }
+
+        // Apply active class to the link matching activeId
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${activeId}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', scrollSpyHighlight, { passive: true });
+    scrollSpyHighlight(); // Run once on initialization
+
 });

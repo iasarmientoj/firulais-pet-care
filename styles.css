@@ -2325,29 +2325,7 @@ body {
     overflow: hidden;
 }
 
-.how-blob {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.16;
-    pointer-events: none;
-    background: var(--dark-brown);
-}
 
-.how-blob--1 {
-    width: 340px;
-    height: 340px;
-    top: -100px;
-    left: -80px;
-    filter: blur(60px);
-}
-
-.how-blob--2 {
-    width: 260px;
-    height: 260px;
-    bottom: -60px;
-    right: -60px;
-    filter: blur(50px);
-}
 
 .how-container {
     width: 100%;
