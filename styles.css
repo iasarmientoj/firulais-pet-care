@@ -27,6 +27,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) - 20px);
     /* Offset for fixed header + breathing room */
+    overflow-x: hidden;
 }
 
 body {
@@ -1682,20 +1683,38 @@ body {
 /* SmartPhones / Mobile Screens */
 @media (max-width: 576px) {
     .header-container {
-        padding: 0 20px;
+        padding: 0 15px;
     }
 
     .brand-logo {
-        font-size: 20px;
+        font-size: 17px;
+        gap: 8px;
     }
 
     .brand-mini-logo {
-        height: 32px;
+        height: 28px;
     }
 
     .btn-cta {
-        padding: 8px 18px;
-        font-size: 14px;
+        padding: 8px 12px;
+        font-size: 12.5px;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 380px) {
+        .brand-logo {
+            font-size: 15px;
+            gap: 6px;
+        }
+
+        .brand-mini-logo {
+            height: 24px;
+        }
+
+        .btn-cta {
+            padding: 6px 10px;
+            font-size: 11.5px;
+        }
     }
 
     .hero-container {
@@ -2751,6 +2770,12 @@ body {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
+    .contact-map-dog {
+        right: -10px;
+        bottom: -30px;
+        width: 130px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2776,6 +2801,10 @@ body {
 
     .contact-container {
         padding: 0 20px;
+    }
+
+    .contact-map-dog {
+        display: none;
     }
 }
 
