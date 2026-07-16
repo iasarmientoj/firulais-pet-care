@@ -2339,7 +2339,7 @@ html, body {
     position: relative;
     width: 100%;
     background-color: #fff8e7;
-    padding: 110px 0 120px;
+    padding: 110px 0 35px; /* Reduced bottom padding */
 }
 
 .contact-container {
@@ -2575,7 +2575,7 @@ html, body {
     position: relative;
     width: 100%;
     background-color: #fff8e7; /* Warm cream background */
-    padding: 95px 0 110px;
+    padding: 35px 0 110px; /* Reduced top padding */
 }
 
 .faq-container {
