@@ -1470,8 +1470,36 @@ body {
         gap: 18px;
     }
 
+    .service-card {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
     .service-card-img {
-        height: 160px;
+        width: 110px;
+        height: auto;
+        flex: 0 0 110px;
+    }
+
+    .service-card-body {
+        padding: 14px 14px 16px;
+        gap: 6px;
+    }
+
+    .service-card-title {
+        font-size: 17px;
+    }
+
+    .service-card-desc {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .service-tag {
+        font-size: 11.5px;
+        padding: 4px 10px;
+        margin-top: 4px;
     }
 
     .services-header {
